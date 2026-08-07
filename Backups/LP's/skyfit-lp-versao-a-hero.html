@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkyFit Cascavel — Pré-Inauguração</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #001E8A;
+    --azul-escuro: #001260;
+    --vermelho: #B9133E;
+    --branco: #FFFFFF;
+    --preto: #060606;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--preto);
+    color: var(--branco);
+    overflow-x: hidden;
+  }
+
+  /* ── ESTRELAS ── */
+  .estrelas {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .estrelas span {
+    font-size: 18px;
+    color: var(--branco);
+    display: inline-block;
+  }
+  .estrelas span:nth-child(2) { font-size: 24px; }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(0, 18, 96, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--vermelho);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-logo .logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -1px;
+  }
+
+  .nav-logo .sky { color: var(--branco); }
+  .nav-logo .fit { color: var(--vermelho); font-style: italic; }
+
+  .nav-cta {
+    background: var(--vermelho);
+    color: var(--branco);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .nav-cta:hover { background: #8f0f2f; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul) 60%, #0d2fa0 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 60px,
+      rgba(255,255,255,0.015) 60px,
+      rgba(255,255,255,0.015) 61px
+    );
+  }
+
+  .hero-faixa {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 8px;
+    background: var(--vermelho);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .badge-urgencia {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--vermelho);
+    color: var(--branco);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    margin-bottom: 28px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  }
+
+  .badge-urgencia::before {
+    content: '●';
+    font-size: 8px;
+    animation: pulsar 1.2s infinite;
+  }
+
+  @keyframes pulsar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin-bottom: 28px;
+    max-width: 800px;
+  }
+
+  .hero h1 em {
+    color: var(--vermelho);
+    font-style: normal;
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+    max-width: 580px;
+    margin-bottom: 40px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--vermelho);
+    color: var(--branco);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 18px 48px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  }
+  .btn-primary:hover {
+    background: #8f0f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(185,19,62,0.4);
+  }
+
+  .micro-copy {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+
+  /* ── OFERTA ── */
+  .oferta {
+    background: var(--azul);
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .oferta::after {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(185,19,62,0.08);
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .oferta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .oferta h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .oferta h2 em {
+    color: var(--vermelho);
+    font-style: normal;
+  }
+
+  .oferta p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 28px;
+  }
+
+  .preco-box {
+    background: var(--azul-escuro);
+    border-left: 4px solid var(--vermelho);
+    padding: 36px 40px;
+    position: relative;
+  }
+
+  .preco-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    margin-bottom: 12px;
+  }
+
+  .preco-valor {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--branco);
+    margin-bottom: 4px;
+  }
+
+  .preco-valor span {
+    font-size: 28px;
+    font-weight: 600;
+    vertical-align: super;
+  }
+
+  .preco-detalhe {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 24px;
+  }
+
+  .preco-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .preco-includes li {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .preco-includes li::before {
+    content: '✓';
+    color: var(--vermelho);
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .oferta-micro {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+    margin-top: 16px;
+  }
+
+  /* ── BENEFÍCIOS ── */
+  .beneficios {
+    background: var(--preto);
+    padding: 100px 40px;
+    position: relative;
+  }
+
+  .beneficios-faixa {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: linear-gradient(to bottom, var(--vermelho), var(--azul));
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    margin-bottom: 12px;
+  }
+
+  .beneficios h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .beneficios-intro {
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.82);
+    max-width: 680px;
+    margin-bottom: 60px;
+  }
+
+  .beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+  }
+
+  .beneficio-item {
+    background: var(--azul-escuro);
+    padding: 32px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .beneficio-item:hover {
+    background: var(--azul);
+    border-bottom-color: var(--vermelho);
+  }
+
+  .beneficio-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .beneficio-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: var(--branco);
+  }
+
+  .beneficio-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+
+  /* ── PROVA SOCIAL ── */
+  .prova {
+    background: var(--azul);
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prova::before {
+    content: '★★★';
+    position: absolute;
+    right: 40px; top: 40px;
+    font-size: 120px;
+    color: rgba(255,255,255,0.04);
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: -10px;
+  }
+
+  .prova-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .prova h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .prova h2 em {
+    color: var(--vermelho);
+    font-style: normal;
+  }
+
+  .prova p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 20px;
+  }
+
+  .numeros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .numero-item {
+    background: var(--azul-escuro);
+    padding: 28px;
+    text-align: center;
+  }
+
+  .numero-valor {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--vermelho);
+    line-height: 1;
+  }
+
+  .numero-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+
+  .depoimento {
+    background: var(--azul-escuro);
+    border-left: 4px solid var(--vermelho);
+    padding: 28px 32px;
+    margin-top: 28px;
+  }
+
+  .depoimento blockquote {
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 12px;
+  }
+
+  .depoimento cite {
+    font-size: 13px;
+    color: var(--vermelho);
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── TABELA COMPARATIVA (versão A) ── */
+  .comparacao {
+    background: var(--preto);
+    padding: 100px 40px;
+  }
+
+  .comparacao h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .comparacao h2 em { color: var(--vermelho); font-style: normal; }
+
+  .comparacao-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 48px;
+    max-width: 500px;
+  }
+
+  .tabela-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+
+  thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  thead th:first-child { text-align: left; }
+
+  thead th.skyfit-col {
+    background: var(--vermelho);
+    color: var(--branco);
+  }
+
+  thead th.outra-col {
+    background: #1a1a1a;
+    color: rgba(255,255,255,0.5);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+  tbody td {
+    padding: 18px 24px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  tbody td:first-child {
+    font-weight: 500;
+    color: var(--branco);
+  }
+
+  tbody td:not(:first-child) {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .ok { color: #4ade80; }
+  .nok { color: rgba(255,255,255,0.2); }
+  .warn { color: #fbbf24; font-size: 14px; }
+
+  .preco-destaque {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--branco);
+  }
+
+  .preco-outra {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.35);
+    text-decoration: line-through;
+  }
+
+  /* ── FORMULÁRIO ── */
+  .formulario {
+    background: var(--azul-escuro);
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .formulario::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--vermelho);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .form-titulo h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .form-titulo h2 em { color: var(--vermelho); font-style: normal; }
+
+  .form-titulo p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .form-box {
+    background: var(--azul);
+    padding: 48px 40px;
+  }
+
+  .form-field {
+    margin-bottom: 20px;
+  }
+
+  .form-field label {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 8px;
+  }
+
+  .form-field input {
+    width: 100%;
+    background: var(--azul-escuro);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    color: var(--branco);
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-field input:focus {
+    border-bottom-color: var(--vermelho);
+    background: rgba(0,30,138,0.8);
+  }
+
+  .form-field input::placeholder {
+    color: rgba(255,255,255,0.25);
+  }
+
+  .btn-form {
+    width: 100%;
+    background: var(--vermelho);
+    color: var(--branco);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  }
+
+  .btn-form:hover {
+    background: #8f0f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(185,19,62,0.5);
+  }
+
+  .form-seguranca {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 14px;
+  }
+
+  /* ── FECHAMENTO ── */
+  .fechamento {
+    background: var(--azul);
+    padding: 100px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fechamento::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.02) 40px,
+      rgba(255,255,255,0.02) 41px
+    );
+  }
+
+  .fechamento-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .fechamento h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .fechamento h2 em { color: var(--vermelho); font-style: normal; }
+
+  .fechamento p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 16px;
+  }
+
+  .frase-impacto {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(24px, 3.5vw, 40px);
+    font-weight: 800;
+    font-style: italic;
+    color: var(--vermelho);
+    margin: 32px 0 40px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--preto);
+    border-top: 3px solid var(--azul);
+    padding: 48px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-logo .logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+  }
+
+  .footer-logo .sky { color: var(--branco); }
+  .footer-logo .fit { color: var(--vermelho); font-style: italic; }
+  .footer-logo .sub {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .footer-info {
+    text-align: center;
+  }
+
+  .footer-info p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 4px;
+  }
+
+  .footer-social {
+    text-align: right;
+  }
+
+  .footer-social a {
+    display: inline-block;
+    color: var(--branco);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    background: var(--azul);
+    padding: 10px 20px;
+    transition: background 0.2s;
+  }
+
+  .footer-social a:hover { background: var(--vermelho); }
+
+  /* ── FAIXAS LATERAIS ── */
+  .faixa-lateral {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    display: flex;
+  }
+
+  .faixa-lateral .f1 { width: 4px; background: rgba(255,255,255,0.08); }
+  .faixa-lateral .f2 { width: 8px; background: var(--vermelho); opacity: 0.7; }
+  .faixa-lateral .f3 { width: 20px; background: var(--azul); opacity: 0.3; }
+
+  /* ── RESPONSIVO ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .hero-content { padding: 60px 24px; }
+    .oferta, .beneficios, .prova, .comparacao, .formulario, .fechamento { padding: 70px 24px; }
+    .oferta-grid, .prova-grid, .form-grid { grid-template-columns: 1fr; gap: 40px; }
+    footer { padding: 40px 24px; flex-direction: column; text-align: center; }
+    .footer-social { text-align: center; }
+  }
+
+  /* ── ANIMAÇÕES ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.35s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.45s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.55s; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-text"><span class="sky">SKY</span><span class="fit">FIT</span></div>
+  </div>
+  <a href="#formulario" class="nav-cta">Garantir minha vaga</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-faixa"></div>
+  <div class="hero-content">
+    <div class="estrelas"><span>★</span><span>★</span><span>★</span></div>
+    <div class="badge-urgencia">Pré-Inauguração — Vagas Limitadas</div>
+    <h1>Cascavel vai ter a academia que ela <em>merecia ter</em> há muito tempo.</h1>
+    <p class="hero-sub">A SkyFit chega na Avenida Brasil com estrutura completa, aulas inclusas e o melhor atendimento que você já teve numa academia — tudo isso por menos do que você imagina.</p>
+    <div class="hero-ctas">
+      <a href="#formulario" class="btn-primary">Quero minha vaga →</a>
+      <span class="micro-copy">Vagas limitadas. Oferta válida somente no período de pré-inauguração.</span>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="oferta">
+  <div class="section-inner">
+    <div class="oferta-grid">
+      <div>
+        <div class="estrelas"><span>★</span><span>★</span><span>★</span></div>
+        <p class="section-label">Condição especial</p>
+        <h2>Entre agora e <em>garanta</em> um valor especial.</h2>
+        <p>Quem garante a matrícula antes da inauguração trava o menor preço da história da SkyFit Cascavel. Depois que as portas abrirem, esse valor não volta.</p>
+        <a href="#formulario" class="btn-primary">Garantir minha condição especial →</a>
+      </div>
+      <div class="preco-box">
+        <p class="preco-label">A partir de</p>
+        <div class="preco-valor"><span>R$</span>99<span>,90</span></div>
+        <p class="preco-detalhe">por mês · no período de pré-inauguração</p>
+        <ul class="preco-includes">
+          <li>Musculação com acompanhamento</li>
+          <li>Todas as aulas coletivas inclusas</li>
+          <li>Skybox, Spin, Pilates e Jump</li>
+          <li>Sem taxa de matrícula*</li>
+          <li>App SkyFit + Totem de treino</li>
+        </ul>
+        <p class="oferta-micro">*Oferta válida para novos cadastros no período de pré-inauguração.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="beneficios">
+  <div class="beneficios-faixa"></div>
+  <div class="section-inner">
+    <div class="estrelas"><span>★</span><span>★</span><span>★</span></div>
+    <p class="section-label">Diferenciais</p>
+    <h2>Aqui você não é número.<br>Você é aluno.</h2>
+    <p class="beneficios-intro">Na SkyFit, professor não fica parado olhando você treinar errado. Ele vai até você, corrige, orienta e te desafia. Não importa se você nunca pisou numa academia ou se treina há anos. Não importa sua idade, seu peso ou seu nível. Aqui todo mundo começa, todo mundo evolui e todo mundo é bem-vindo.</p>
+    <div class="beneficios-grid">
+      <div class="beneficio-item">
+        <span class="beneficio-icon">🏋️</span>
+        <div class="beneficio-titulo">Musculação completa</div>
+        <p class="beneficio-desc">Equipamentos modernos com profissional que acompanha seu treino de perto.</p>
+      </div>
+      <div class="beneficio-item">
+        <span class="beneficio-icon">🥊</span>
+        <div class="beneficio-titulo">Skybox incluso</div>
+        <p class="beneficio-desc">Área exclusiva para treinos funcionais e de alta intensidade. Diferente de tudo que Cascavel tem.</p>
+      </div>
+      <div class="beneficio-item">
+        <span class="beneficio-icon">🚴</span>
+        <div class="beneficio-titulo">Spin, Pilates e Jump</div>
+        <p class="beneficio-desc">Todas as aulas coletivas já inclusas no seu plano, sem pagar a mais.</p>
+      </div>
+      <div class="beneficio-item">
+        <span class="beneficio-icon">📱</span>
+        <div class="beneficio-titulo">App SkyFit + Totem</div>
+        <p class="beneficio-desc">Seu treino na palma da mão ou impresso na hora pelo totem da academia.</p>
+      </div>
+      <div class="beneficio-item">
+        <span class="beneficio-icon">🕔</span>
+        <div class="beneficio-titulo">Sem restrição de horário</div>
+        <p class="beneficio-desc">Treine quando quiser. Sua rotina define seu horário.</p>
+      </div>
+      <div class="beneficio-item">
+        <span class="beneficio-icon">🚗</span>
+        <div class="beneficio-titulo">Fácil acesso</div>
+        <p class="beneficio-desc">Na Avenida Brasil com amplo estacionamento na região. Ideal para quem vem direto do trabalho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA SOCIAL -->
+<section class="prova">
+  <div class="section-inner">
+    <div class="prova-grid">
+      <div>
+        <div class="estrelas"><span>★</span><span>★</span><span>★</span></div>
+        <p class="section-label">Credibilidade</p>
+        <h2>Uma academia que <em>nasceu com propósito.</em></h2>
+        <p>A SkyFit é a rede que mais cresce no Brasil — são mais de 790 unidades vendidas em todo o país. Com o apresentador Rodrigo Faro como embaixador, a rede já transformou a vida de milhares de pessoas: de atletas paraolímpicos a corredoras que nunca imaginaram que conseguiriam. Agora é a vez de Cascavel.</p>
+        <div class="depoimento">
+          <blockquote>"A SkyFit me recebeu de braços abertos quando eu achei que academia não era para mim."</blockquote>
+          <cite>— Aluna da rede SkyFit</cite>
+        </div>
+      </div>
+      <div class="numeros-grid">
+        <div class="numero-item">
+          <div class="numero-valor">790+</div>
+          <div class="numero-label">Unidades no Brasil</div>
+        </div>
+        <div class="numero-item">
+          <div class="numero-valor">400+</div>
+          <div class="numero-label">Já em funcionamento</div>
+        </div>
+        <div class="numero-item">
+          <div class="numero-valor">R$99</div>
+          <div class="numero-label">A partir de / mês</div>
+        </div>
+        <div class="numero-item">
+          <div class="numero-valor">1ª</div>
+          <div class="numero-label">Academia em Cascavel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABELA COMPARATIVA (Versão A) -->
+<section class="comparacao">
+  <div class="section-inner">
+    <div class="estrelas"><span>★</span><span>★</span><span>★</span></div>
+    <p class="section-label">Comparação</p>
+    <h2>Tudo que as outras <em>cobram a mais,</em><br>aqui já está incluso.</h2>
+    <p class="comparacao-sub">Veja o que você leva na SkyFit e o que paga nas academias convencionais da região.</p>
+    <div class="tabela-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th class="skyfit-col">★ SkyFit Cascavel</th>
+            <th class="outra-col">Academia comum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aulas coletivas inclusas</td>
+            <td class="ok">✓</td>
+            <td class="nok">✗ Cobrado à parte</td>
+          </tr>
+          <tr>
+            <td>Acompanhamento do professor</td>
+            <td class="ok">✓</td>
+            <td class="warn">⚠ Por conta própria</td>
+          </tr>
+          <tr>
+            <td>App com treino personalizado</td>
+            <td class="ok">✓</td>
+            <td class="nok">✗</td>
+          </tr>
+          <tr>
+            <td>Skybox / Treino funcional</td>
+            <td class="ok">✓</td>
+            <td class="nok">✗</td>
+          </tr>
+          <tr>
+            <td>Sem taxa de matrícula*</td>
+            <td class="ok">✓</td>
+            <td class="nok">✗</td>
+          </tr>
+          <tr>
+            <td>Mensalidade</td>
+            <td><span class="preco-destaque">A partir de R$99,90</span></td>
+            <td><span class="preco-outra">R$180 a R$270+</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br><br>
+    <a href="#formulario" class="btn-primary">Quero aproveitar essa condição →</a>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="formulario" id="formulario">
+  <div class="section-inner">
+    <div class="form-grid">
+      <div class="form-titulo">
+        <div class="estrelas"><span>★</span><span>★</span><span>★</span></div>
+        <p class="section-label">Pré-inauguração</p>
+        <h2>Garanta sua <em>vaga agora.</em></h2>
+        <p>Preencha o formulário ao lado e nossa equipe entra em contato com você com todos os detalhes da condição especial de pré-inauguração.</p>
+      </div>
+      <div class="form-box">
+        <div class="form-field">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" />
+        </div>
+        <div class="form-field">
+          <label for="whatsapp">WhatsApp</label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(45) 99999-9999" />
+        </div>
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" />
+        </div>
+        <button type="submit" class="btn-form">Garantir minha vaga →</button>
+        <p class="form-seguranca">🔒 Seus dados estão seguros. Não enviamos spam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section class="fechamento">
+  <div class="fechamento-inner">
+    <div class="estrelas" style="justify-content: center;"><span>★</span><span>★</span><span>★</span></div>
+    <h2>Cascavel, a SkyFit está <em>chegando.</em><br>E você pode ser um dos primeiros.</h2>
+    <p>As vagas de pré-inauguração são limitadas e garantem a melhor condição que essa academia vai ter.<br>Não é promessa — é matemática. Depois que as portas abrirem, esse valor não volta mais.</p>
+    <div class="frase-impacto">"Você pode esperar. Mas o seu corpo não pode."</div>
+    <a href="#formulario" class="btn-primary">Garantir minha vaga agora →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="logo-text"><span class="sky">SKY</span><span class="fit">FIT</span></div>
+    <span class="sub">Fortalecendo a nossa nação</span>
+  </div>
+  <div class="footer-info">
+    <p>📍 Avenida Brasil, 2419 — São Cristóvão, Cascavel - PR</p>
+    <p style="font-size:12px; margin-top: 8px; color: rgba(255,255,255,0.3);">*Oferta válida para novos cadastros no período de pré-inauguração.</p>
+  </div>
+  <div class="footer-social">
+    <a href="https://instagram.com/skyfitavenidabrasil" target="_blank">@skyfitavenidabrasil</a>
+  </div>
+</footer>
+
+</body>
+</html>
